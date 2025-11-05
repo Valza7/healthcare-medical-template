@@ -49,7 +49,7 @@ export default clerkMiddleware(async (auth, req) => {
   }
 
   // Role-based access control
-  const role = sessionClaims?.metadata?.role as string | undefined;
+  const role = (sessionClaims as any)?.metadata?.role as string | undefined;
 
   // Admin routes require admin role
   if (isAdminRoute(req) && role !== "admin") {
